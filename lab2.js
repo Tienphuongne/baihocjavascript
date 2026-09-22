@@ -70,42 +70,29 @@
 // console.log(html);
 
 
-//Bài 1: 
+// bai1
 const ten = ["An", "Bình", "Nam", "Hòa", "Lan"];
 
-// In Array ra Console
 console.log(ten);
-
-// In phần tử đầu tiên
 console.log(ten[0]);
-
-// In phần tử cuối cùng
 console.log(ten[ten.length - 1]);
-
-// In số lượng phần tử
 console.log(ten.length);
 
-// Thêm một tên mới
 ten.push("Minh");
 console.log(ten);
 
-// Xóa phần tử cuối
 ten.pop();
 console.log(ten);
-//Bài 2:
+
+// bai2
 const names = ["An", "Bình", "Nam", "Hòa", "Lan"];
 
-// Sử dụng for để in từng tên
 for (let i = 0; i < names.length; i++) {
   console.log(names[i]);
 }
 
-// Hoặc dùng for...of (hiện đại hơn)
-for (const name of names) {
-  console.log(name);
-}
-//Bài 3:
- const student = {
+// bai3
+const student = {
   id: 1,
   name: "Nguyễn Văn An",
   age: 20,
@@ -113,97 +100,96 @@ for (const name of names) {
   major: "CNTT",
 };
 
-// In Object
 console.log(student);
-
-// In tên sinh viên
 console.log(student.name);
-
-// In tuổi
 console.log(student.age);
-
-// In email
 console.log(student.email);
 
-// Thay đổi tuổi
 student.age = 21;
 console.log(student.age);
 
-// Thêm thuộc tính phone
 student.phone = "0123456789";
 console.log(student);
-//Bài 4: 
-  const students = [
-  {
-    id: 1,
-    name: "Nguyễn Văn An",
-    age: 20,
-  },
-  {
-    id: 2,
-    name: "Trần Văn Bình",
-    age: 21,
-  },
-  {
-    id: 3,
-    name: "Lê Văn Nam",
-    age: 20,
-  },
+
+// ==================== Bài 4 ====================
+const students = [
+  { id: 1, name: "Nguyễn Văn An", age: 20 },
+  { id: 2, name: "Trần Văn Bình", age: 21 },
+  { id: 3, name: "Lê Văn Nam", age: 20 },
 ];
 
-// In danh sách ra Console
 console.log(students);
-
-// In tên sinh viên đầu tiên
 console.log(students[0].name);
-
-// In tuổi sinh viên thứ hai
 console.log(students[1].age);
 
-// Duyệt danh sách bằng for
 for (let i = 0; i < students.length; i++) {
   console.log(students[i]);
 }
 
-// In tên của tất cả sinh viên
 for (let i = 0; i < students.length; i++) {
   console.log(students[i].name);
 }
 
-// Hoặc dùng for...of
-for (const student of students) {
-  console.log(student.name);
-}
+// bai5
 
-//Bài 5:
 const hocsinh = [
-  {
-    id: 1,
-    name: "Nguyễn Văn An",
-    age: 20,
-  },
-  {
-    id: 2,
-    name: "Trần Văn Bình",
-    age: 21,
-  },
-  {
-    id: 3,
-    name: "Lê Văn Nam",
-    age: 20,
-  },
+  { id: 1, name: "Nguyễn Văn An", age: 20 },
+  { id: 2, name: "Trần Văn Bình", age: 21 },
+  { id: 3, name: "Lê Văn Nam", age: 20 },
 ];
 
-const container = document.getElementById("hocsinh");
+const containerHocSinh = document.getElementById("hocsinh");
 
-let html = "";
+let htmlHocSinh = "";
 for (let i = 0; i < hocsinh.length; i++) {
-  html += `
+  htmlHocSinh += `
     <div>
       <p>${hocsinh[i].name}</p>
       <p>Tuổi: ${hocsinh[i].age}</p>
     </div>
   `;
 }
-container.innerHTML = html;
+if (containerHocSinh) {
+  containerHocSinh.innerHTML = htmlHocSinh;
+}
 
+// baitong hop
+const products = [
+  { id: 1, name: "iPhone 15", price: 20000000 },
+  { id: 2, name: "Samsung Galaxy S24", price: 18000000 },
+  { id: 3, name: "Xiaomi 14", price: 12000000 },
+];
+
+// Bước 1
+console.log("===== Danh sách sản phẩm =====");
+console.log(products);
+
+// Bước 2 + 3
+console.log("\n===== Danh sách theo định dạng =====");
+for (let i = 0; i < products.length; i++) {
+  console.log(`${products[i].name} - ${products[i].price}`);
+}
+
+// Bước 4
+let total = 0;
+for (let i = 0; i < products.length; i++) {
+  total += products[i].price;
+}
+console.log("\nTổng giá tất cả sản phẩm:", total);
+
+// Bước 5
+const containerProducts = document.getElementById("products");
+
+let htmlProducts = "<h3>Danh sách sản phẩm:</h3>";
+for (let i = 0; i < products.length; i++) {
+  htmlProducts += `
+    <div style="margin-bottom: 8px;">
+      <strong>${products[i].name}</strong> - ${products[i].price.toLocaleString()} VNĐ
+    </div>
+  `;
+}
+htmlProducts += `<hr><strong>Tổng giá: ${total.toLocaleString()} VNĐ</strong>`;
+
+if (containerProducts) {
+  containerProducts.innerHTML = htmlProducts;
+}
